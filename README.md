@@ -17,3 +17,10 @@
 **Schema first**: Updating the schema before implementing a new query or mutation
 
 **Code first**: Code first and the schema will automatically update (that is where *TypeGraphQL* comes in)
+
+## TODO
+- [x] Add a simple server
+- [x] Create the normal server
+- [ ] Create the CustomerResolver
+- [ ] Add MongoDB
+- [ ] Deploy
