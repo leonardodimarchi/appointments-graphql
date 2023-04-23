@@ -1,5 +1,7 @@
 # Appointments API
 
+A simple API just to keep me in shape
+
 ## Servers
 
 **Server**: Can be found at the src folder
