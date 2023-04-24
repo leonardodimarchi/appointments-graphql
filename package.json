@@ -2,7 +2,6 @@
   "name": "appointments-graphql",
   "version": "1.0.0",
   "description": "A simple API",
-  "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "dev:simple": "ts-node-dev --respawn --transpile-only simple-server.ts",

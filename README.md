@@ -23,6 +23,6 @@ A simple API just to keep me in shape
 ## TODO
 - [x] Add a simple server
 - [x] Create the normal server
-- [ ] Create the CustomerResolver
+- [x] Create the CustomerResolver
 - [ ] Add MongoDB
 - [ ] Deploy
