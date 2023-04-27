@@ -6,6 +6,7 @@
 type AppointmentViewModel {
   customer: CustomerViewModel!
   endsAt: DateTime!
+  id: String!
   startsAt: DateTime!
 }
 
