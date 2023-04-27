@@ -1,28 +1,28 @@
 import { Arg, FieldResolver, Mutation, Query, Resolver, Root } from "type-graphql";
-import { CustomerModel } from "../dtos/models/customer-model";
+import { CustomerViewModel } from "../dtos/models/customer-view-model";
 import { CreateCustomerInput } from "../dtos/inputs/create-customer-input";
-import { AppointmentModel } from "../dtos/models/appointment-model";
+import { AppointmentViewModel } from "../dtos/models/appointment-view-model";
 
-@Resolver(() => CustomerModel)
+@Resolver(() => CustomerViewModel)
 export class CustomerResolver {
-  @Query(() => [CustomerModel])
+  @Query(() => [CustomerViewModel])
   async customers() {
     return [{
       name: 'John Doe',
     }];
   }
 
-  @Mutation(() => CustomerModel)
+  @Mutation(() => CustomerViewModel)
   async createCustomer(@Arg('data') data: CreateCustomerInput) {
-    const customer: CustomerModel = {
+    const customer: CustomerViewModel = {
       name: data.name,
     };
 
     return customer;
   }
 
-  @FieldResolver(() => [AppointmentModel])
-  async appointments(@Root() customer: CustomerModel) {
+  @FieldResolver(() => [AppointmentViewModel])
+  async appointments(@Root() customer: CustomerViewModel) {
     return [
       { customerId: customer.name, startsAt: new Date(), endsAt: new Date() },
       { customerId: customer.name, startsAt: new Date(), endsAt: new Date() },

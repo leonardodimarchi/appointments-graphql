@@ -1,11 +1,11 @@
 import { Arg, FieldResolver, Mutation, Query, Resolver, Root } from "type-graphql";
 import { CreateAppointmentInput } from "../dtos/inputs/create-appointment-input";
-import { AppointmentModel } from "../dtos/models/appointment-model";
-import { CustomerModel } from "../dtos/models/customer-model";
+import { AppointmentViewModel } from "../dtos/models/appointment-view-model";
+import { CustomerViewModel } from "../dtos/models/customer-view-model";
 
-@Resolver(() => AppointmentModel)
+@Resolver(() => AppointmentViewModel)
 export class AppointmentsResolver {
-  @Query(() => [AppointmentModel])
+  @Query(() => [AppointmentViewModel])
   async appointments() {
     return [{
       startsAt: new Date(),
@@ -13,9 +13,9 @@ export class AppointmentsResolver {
     }];
   }
 
-  @Mutation(() => AppointmentModel)
+  @Mutation(() => AppointmentViewModel)
   async createAppointment(@Arg('data') data: CreateAppointmentInput) {
-    const appointment: AppointmentModel = {
+    const appointment: AppointmentViewModel = {
       startsAt: data.startsAt,
       endsAt: data.endsAt,
     };
@@ -23,8 +23,8 @@ export class AppointmentsResolver {
     return appointment;
   }
 
-  @FieldResolver(() => CustomerModel)
-  async customer(@Root() appointment: AppointmentModel) {
+  @FieldResolver(() => CustomerViewModel)
+  async customer(@Root() appointment: AppointmentViewModel) {
     return {
       name: 'My Customer'
     }

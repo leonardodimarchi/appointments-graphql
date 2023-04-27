@@ -3,8 +3,8 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
-type AppointmentModel {
-  customer: CustomerModel!
+type AppointmentViewModel {
+  customer: CustomerViewModel!
   endsAt: DateTime!
   startsAt: DateTime!
 }
@@ -19,8 +19,8 @@ input CreateCustomerInput {
   name: String!
 }
 
-type CustomerModel {
-  appointments: [AppointmentModel!]!
+type CustomerViewModel {
+  appointments: [AppointmentViewModel!]!
   name: String!
 }
 
@@ -30,11 +30,11 @@ The javascript `Date` as string. Type represents date and time as the ISO Date s
 scalar DateTime
 
 type Mutation {
-  createAppointment(data: CreateAppointmentInput!): AppointmentModel!
-  createCustomer(data: CreateCustomerInput!): CustomerModel!
+  createAppointment(data: CreateAppointmentInput!): AppointmentViewModel!
+  createCustomer(data: CreateCustomerInput!): CustomerViewModel!
 }
 
 type Query {
-  appointments: [AppointmentModel!]!
-  customers: [CustomerModel!]!
+  appointments: [AppointmentViewModel!]!
+  customers: [CustomerViewModel!]!
 }

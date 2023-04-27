@@ -1,7 +1,7 @@
 import { Field, ObjectType } from "type-graphql";
 
 @ObjectType()
-export class AppointmentModel {
+export class AppointmentViewModel {
   @Field()
   startsAt: Date;
 

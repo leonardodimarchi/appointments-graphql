@@ -1,7 +1,7 @@
 import { Field, ObjectType } from "type-graphql";
 
 @ObjectType()
-export class CustomerModel {
+export class CustomerViewModel {
   @Field()
   name: string;
 }
