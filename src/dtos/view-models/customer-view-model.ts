@@ -1,4 +1,5 @@
 import { Field, ObjectType } from "type-graphql";
+import { AppointmentViewModel } from "./appointment-view-model";
 
 @ObjectType()
 export class CustomerViewModel {
@@ -7,4 +8,7 @@ export class CustomerViewModel {
 
   @Field()
   name: string;
+
+  @Field(() => [AppointmentViewModel])
+  appointments: AppointmentViewModel[];
 }

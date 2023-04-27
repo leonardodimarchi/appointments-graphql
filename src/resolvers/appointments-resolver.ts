@@ -22,6 +22,11 @@ export class AppointmentsResolver {
 
   @Mutation(() => AppointmentViewModel)
   async createAppointment(@Arg('data') data: CreateAppointmentInput): Promise<AppointmentViewModel> {
+    const customer = await CustomerModel.findById(data.customerId);
+
+    if (!customer)
+      throw new Error('Customer not found.');
+
     const appointment = new AppointmentModel({
       _id: randomUUID(),
       customerId: data.customerId,
@@ -49,6 +54,7 @@ export class AppointmentsResolver {
     return {
       id: result.id,
       name: result.name,
+      appointments: [],
     };
   }
 }

@@ -4,7 +4,8 @@
 # -----------------------------------------------
 
 type AppointmentViewModel {
-  customer: CustomerViewModel!
+  customer: CustomerViewModel
+  customerId: String!
   endsAt: DateTime!
   id: String!
   startsAt: DateTime!
@@ -22,6 +23,7 @@ input CreateCustomerInput {
 
 type CustomerViewModel {
   appointments: [AppointmentViewModel!]!
+  id: String!
   name: String!
 }
 

@@ -1,4 +1,5 @@
 import { Field, ObjectType } from "type-graphql";
+import { CustomerViewModel } from "./customer-view-model";
 
 @ObjectType()
 export class AppointmentViewModel {
@@ -13,4 +14,7 @@ export class AppointmentViewModel {
 
   @Field()
   endsAt: Date;
+
+  @Field({ nullable: true })
+  customer?: CustomerViewModel;
 }

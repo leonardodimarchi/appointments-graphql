@@ -15,6 +15,7 @@ export class CustomerResolver {
     return results.map(customer => ({
       id: customer.id,
       name: customer.name,
+      appointments: []
     }));
   }
 
@@ -30,6 +31,7 @@ export class CustomerResolver {
     return {
       id: customer.id,
       name: customer.name,
+      appointments: [],
     };
   }
 
