@@ -1,7 +1,7 @@
 import { Arg, FieldResolver, Mutation, Query, Resolver, Root } from "type-graphql";
 import { CreateAppointmentInput } from "../dtos/inputs/create-appointment-input";
-import { AppointmentViewModel } from "../dtos/models/appointment-view-model";
-import { CustomerViewModel } from "../dtos/models/customer-view-model";
+import { AppointmentViewModel } from "../dtos/view-models/appointment-view-model";
+import { CustomerViewModel } from "../dtos/view-models/customer-view-model";
 import { AppointmentModel } from "../models/appointment-model";
 import { randomUUID } from "node:crypto";
 

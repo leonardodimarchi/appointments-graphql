@@ -1,7 +1,7 @@
 import { Arg, FieldResolver, Mutation, Query, Resolver, Root } from "type-graphql";
-import { CustomerViewModel } from "../dtos/models/customer-view-model";
+import { CustomerViewModel } from "../dtos/view-models/customer-view-model";
 import { CreateCustomerInput } from "../dtos/inputs/create-customer-input";
-import { AppointmentViewModel } from "../dtos/models/appointment-view-model";
+import { AppointmentViewModel } from "../dtos/view-models/appointment-view-model";
 
 @Resolver(() => CustomerViewModel)
 export class CustomerResolver {
