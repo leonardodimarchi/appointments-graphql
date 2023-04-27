@@ -4,6 +4,7 @@ import { AppointmentViewModel } from "../dtos/view-models/appointment-view-model
 import { CustomerViewModel } from "../dtos/view-models/customer-view-model";
 import { AppointmentModel } from "../models/appointment-model";
 import { randomUUID } from "node:crypto";
+import { CustomerModel } from "../models/customer-model";
 
 @Resolver(() => AppointmentViewModel)
 export class AppointmentsResolver {
@@ -11,13 +12,12 @@ export class AppointmentsResolver {
   async appointments(): Promise<AppointmentViewModel[]> {
     const appointments = await AppointmentModel.find();
 
-    return appointments.map(appointment => {
-      return {
-        id: appointment.id,
-        startsAt: appointment.startsAt,
-        endsAt: appointment.endsAt,
-      };
-    });
+    return appointments.map(appointment => ({
+      id: appointment.id,
+      customerId: appointment.customerId,
+      startsAt: appointment.startsAt,
+      endsAt: appointment.endsAt,
+    }));
   }
 
   @Mutation(() => AppointmentViewModel)
@@ -33,15 +33,22 @@ export class AppointmentsResolver {
 
     return {
       id: appointment.id,
+      customerId: appointment.customerId,
       startsAt: appointment.startsAt,
       endsAt: appointment.endsAt,
     };
   }
 
   @FieldResolver(() => CustomerViewModel)
-  async customer(@Root() appointment: AppointmentViewModel): Promise<CustomerViewModel> {
+  async customer(@Root() appointment: AppointmentViewModel): Promise<CustomerViewModel | null> {
+    const result = await CustomerModel.findById(appointment.customerId);
+
+    if (!result)
+      return null;
+
     return {
-      name: 'My Customer'
-    }
+      id: result.id,
+      name: result.name,
+    };
   }
 }

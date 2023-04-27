@@ -6,6 +6,9 @@ export class AppointmentViewModel {
   id: string;
 
   @Field()
+  customerId: string;
+
+  @Field()
   startsAt: Date;
 
   @Field()
