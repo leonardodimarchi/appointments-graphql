@@ -38,5 +38,7 @@ There are different approaches to handle with MongoDB database interactions:
 - [x] Add a simple server
 - [x] Create the normal server
 - [x] Create the CustomerResolver
-- [ ] Add MongoDB
+- [x] Create MongoDB connection
+- [x] Create AppointmentModel and implement it at the resolver
+- [ ] Create CustomerModel and implement it at the resolver
 - [ ] Deploy
