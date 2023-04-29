@@ -1,6 +1,6 @@
 import "reflect-metadata";
 
-import { ApolloServer } from "apollo-server";
+import { ApolloServer } from "@apollo/server";
 import { buildSchema } from "type-graphql";
 import { AppointmentsResolver } from "./resolvers/appointments-resolver";
 import { CustomerResolver } from "./resolvers/customer-resolver";
