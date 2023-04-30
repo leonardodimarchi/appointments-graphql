@@ -1,0 +1,16 @@
+{
+  "version": "2.0",
+  "headers": {
+    "content-type": "application/json"
+  },
+  "isBase64Encoded": false,
+  "rawQueryString": "",
+  "requestContext": {
+    "http": {
+      "method": "POST"
+    }
+  },
+  "rawPath": "/",
+  "routeKey": "/",
+  "body": "{\"operationName\": null, \"variables\": null, \"query\": \"{ appointments { id } }\"}"
+}

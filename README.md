@@ -34,6 +34,10 @@ There are different approaches to handle with MongoDB database interactions:
 
 **Mongoose (ODM)**: It is a NodeJS based Object Data Modeling library (just like an ORM for SQL databases). It helps us by creating a schema and performing validations at the application layer.
 
+## Deploy
+
+I'm using [serverless](https://www.serverless.com/) alongside with [serverless-adapter](https://serverless-adapter.viniciusl.com.br/) to deploy the API at AWS (Lambda + API Gateway).
+
 ## TODO
 - [x] Add a simple server
 - [x] Create the normal server

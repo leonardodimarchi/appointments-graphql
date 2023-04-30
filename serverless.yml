@@ -1,0 +1,24 @@
+service: appointments-graphql
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  memorySize: 256
+  timeout: 30
+  httpApi:
+    cors: true
+
+functions:
+  appointmentsGraphql:
+    handler: src/index.handler
+    events:
+      - httpApi:
+          path: /
+          method: POST
+      - httpApi:
+          path: /
+          method: GET
+
+plugins:
+  - serverless-plugin-typescript
