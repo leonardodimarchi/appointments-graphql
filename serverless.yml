@@ -1,17 +1,22 @@
 service: appointments-graphql
 frameworkVersion: '3'
 
+useDotenv: true
+
 provider:
   name: aws
   runtime: nodejs16.x
   memorySize: 256
-  timeout: 30
+  timeout: 10
   httpApi:
     cors: true
 
 functions:
   appointmentsGraphql:
     handler: src/index.handler
+    environment:
+      NODE_ENV: production
+      DB_URL: ${env:DB_URL}
     events:
       - httpApi:
           path: /

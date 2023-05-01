@@ -22,7 +22,7 @@ export async function createServer(): Promise<ApolloServer> {
       AppointmentsResolver,
       CustomerResolver,
     ],
-    emitSchemaFile: path.resolve(__dirname, 'schema.gql'),
+    emitSchemaFile: process.env.NODE_ENV === 'development' ? path.resolve(__dirname, 'schema.gql') : false,
     validate: {
       forbidUnknownValues: false,
     }
