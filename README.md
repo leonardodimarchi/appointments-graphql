@@ -4,9 +4,9 @@ A simple API just to keep me in shape
 
 ## Servers
 
-**Server**: Can be found at the src folder
+**Server**: Can be found at the src folder, it uses TypeGraphQL and MongoDB with Typegoose (`npm run dev`)
 
-**Simple server**: It is the simple-server.ts file, where i didn't use TypeGraphQL, just the ApolloServer
+**Simple server**: It is the simple-server.ts file, where i didn't use TypeGraphQL, just the ApolloServer and an in-memory database. (`npm run dev:simple`)
 
 ## GraphQL
 
@@ -34,9 +34,13 @@ There are different approaches to handle with MongoDB database interactions:
 
 **Mongoose (ODM)**: It is a NodeJS based Object Data Modeling library (just like an ORM for SQL databases). It helps us by creating a schema and performing validations at the application layer.
 
+> Here is where Typegoose comes in, helping us to create Mongoose schemas with Typescript
+
 ## Deploy
 
 I'm using [serverless](https://www.serverless.com/) alongside with [serverless-adapter](https://serverless-adapter.viniciusl.com.br/) to deploy the API at AWS (Lambda + API Gateway).
+
+To deploy the API, all i have to do is setup the .env file with my DB_URL and run `npm run deploy`.
 
 ## TODO
 - [x] Add a simple server
@@ -45,4 +49,4 @@ I'm using [serverless](https://www.serverless.com/) alongside with [serverless-a
 - [x] Create MongoDB connection
 - [x] Create AppointmentModel and implement it at the resolver
 - [x] Create CustomerModel and implement it at the resolver
-- [ ] Deploy
+- [x] Deploy
