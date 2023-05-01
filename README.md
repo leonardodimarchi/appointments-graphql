@@ -1,6 +1,6 @@
 # Appointments API
 
-A simple API just to keep me in shape
+A simple API just to remember how to use GraphQL and to learn more about [serverless](https://www.serverless.com/) and [serverless-adapter](https://serverless-adapter.viniciusl.com.br/).
 
 ## Servers
 
@@ -38,7 +38,7 @@ There are different approaches to handle with MongoDB database interactions:
 
 ## Deploy
 
-I'm using [serverless](https://www.serverless.com/) alongside with [serverless-adapter](https://serverless-adapter.viniciusl.com.br/) to deploy the API at AWS (Lambda + API Gateway).
+I'm using [serverless](https://www.serverless.com/) alongside with [serverless-adapter](https://serverless-adapter.viniciusl.com.br/) to deploy the API at AWS (Lambda + API Gateway). The AWS Lambda handler is implemented at the [index.ts](src/index.ts) file.
 
 To deploy the API, all i have to do is setup the .env file with my DB_URL and run `npm run deploy`.
 
