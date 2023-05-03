@@ -42,7 +42,22 @@ I'm using [serverless](https://www.serverless.com/) alongside with [serverless-a
 
 To deploy the API, all i have to do is setup the .env file with my DB_URL and run `npm run deploy`.
 
-## TODO
+## N+1 problem
+
+The n+1 problem means that the server executes multiple unnecessary trips to the database to fetch nested data (Field Resolvers). For example, if we are fetching 10 customers and their appointments, we'll be doing 10 extra trips (one for each user) to the database to get those appointments.
+
+### Why it is a problem
+
+- It is more efficient to fetch 10 appointments in a single query than 10 queries that fetch one appointment.
+
+- If an entitiy has references in multiple other entities, then we're wasting resources fetching something we already have.
+
+### Related
+[ApolloGraphQL - How Federation handles the N+1 query problem](https://www.apollographql.com/docs/technotes/TN0019-federation-n-plus-1/)
+
+[Shopify Engineering - Solving the N+1 Problem for GraphQL through Batching](https://shopify.engineering/solving-the-n-1-problem-for-graphql-through-batching#:~:text=The%20n%2B1%20problem%20means,the%20address%20for%20N%20authors.)
+
+# TODO
 - [x] Add a simple server
 - [x] Create the normal server
 - [x] Create the CustomerResolver
