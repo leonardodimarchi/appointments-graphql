@@ -59,6 +59,7 @@ The n+1 problem means that the server executes multiple unnecessary trips to the
 - Using conditional joins to fetch all of the data at one call to the database.
 
 ### Related
+
 [ApolloGraphQL - How Federation handles the N+1 query problem](https://www.apollographql.com/docs/technotes/TN0019-federation-n-plus-1/)
 
 [Shopify Engineering - Solving the N+1 Problem for GraphQL through Batching](https://shopify.engineering/solving-the-n-1-problem-for-graphql-through-batching#:~:text=The%20n%2B1%20problem%20means,the%20address%20for%20N%20authors.)
