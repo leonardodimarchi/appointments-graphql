@@ -52,6 +52,12 @@ The n+1 problem means that the server executes multiple unnecessary trips to the
 
 - If an entitiy has references in multiple other entities, then we're wasting resources fetching something we already have.
 
+### Solutions
+
+- One of the most common solutions is to use [dataloader](https://github.com/graphql/dataloader), that batches all of the ids so you can fetch the relations in only one call to the database (you can even fetch from another database).
+
+- Using conditional joins to fetch all of the data at one call to the database.
+
 ### Related
 [ApolloGraphQL - How Federation handles the N+1 query problem](https://www.apollographql.com/docs/technotes/TN0019-federation-n-plus-1/)
 
