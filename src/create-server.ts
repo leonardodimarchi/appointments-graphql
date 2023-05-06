@@ -1,12 +1,46 @@
 import "reflect-metadata";
 
-import { ApolloServer } from "@apollo/server";
+import { ApolloServer, ApolloServerPlugin, BaseContext } from "@apollo/server";
 import { buildSchema } from "type-graphql";
 import { AppointmentsResolver } from "./resolvers/appointments-resolver";
 import { CustomerResolver } from "./resolvers/customer-resolver";
 import mongoose from "mongoose";
 import path from "node:path";
+import DataLoader from "dataloader";
 import * as dotenv from 'dotenv';
+import { AppointmentModel, AppointmentSchema } from "./models/appointment-model";
+
+const ApolloServerLoaderPlugin = (): ApolloServerPlugin => ({
+  requestDidStart: async () => ({
+    async didResolveSource(requestContext) {
+      Object.assign(requestContext.contextValue, {
+        appointmentLoader: new DataLoader(async keys => {
+          const customerIds = keys as string[];
+
+          const appointments = await AppointmentModel.findByCustomerIds(customerIds);
+
+          const appointmentsByCustomerId = appointments.reduce((byCustomer, appointment) => {
+            const formattedAppointment = {
+              id: appointment.id,
+              customerId: appointment.customerId,
+              startsAt: appointment.startsAt,
+              endsAt: appointment.endsAt,
+            };
+
+            if (byCustomer[appointment.customerId])
+              byCustomer[appointment.customerId].push(formattedAppointment);
+            else
+              byCustomer[appointment.customerId] = [formattedAppointment];
+
+            return byCustomer;
+          }, {} as any);
+
+          return customerIds.map(id => appointmentsByCustomerId[id] ?? []);
+        })
+      });
+    },
+  }),
+});
 
 export async function createServer(): Promise<ApolloServer> {
   dotenv.config();
@@ -30,5 +64,8 @@ export async function createServer(): Promise<ApolloServer> {
 
   return new ApolloServer({
     schema,
+    plugins: [
+      ApolloServerLoaderPlugin(),
+    ]
   });
 }

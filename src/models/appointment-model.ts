@@ -1,6 +1,6 @@
 import { ReturnModelType, getModelForClass, prop } from "@typegoose/typegoose";
 
-class AppointmentSchema {
+export class AppointmentSchema {
   @prop()
   public _id!: string;
 
@@ -15,6 +15,10 @@ class AppointmentSchema {
 
   static async findByCustomerId(this: ReturnModelType<typeof AppointmentSchema>, customerId: string) {
     return this.find({ customerId }).exec();
+  }
+
+  static async findByCustomerIds(this: ReturnModelType<typeof AppointmentSchema>, customerIds: string[]) {
+    return this.find({ customerId: { $in: customerIds } }).exec();
   }
 }
 
