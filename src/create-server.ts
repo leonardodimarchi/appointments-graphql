@@ -1,6 +1,6 @@
 import "reflect-metadata";
 
-import { ApolloServer, ApolloServerPlugin, BaseContext } from "@apollo/server";
+import { ApolloServer, ApolloServerPlugin } from "@apollo/server";
 import { buildSchema } from "type-graphql";
 import { AppointmentsResolver } from "./resolvers/appointments-resolver";
 import { CustomerResolver } from "./resolvers/customer-resolver";
@@ -8,7 +8,7 @@ import mongoose from "mongoose";
 import path from "node:path";
 import DataLoader from "dataloader";
 import * as dotenv from 'dotenv';
-import { AppointmentModel, AppointmentSchema } from "./models/appointment-model";
+import { AppointmentModel } from "./models/appointment-model";
 
 const ApolloServerLoaderPlugin = (): ApolloServerPlugin => ({
   requestDidStart: async () => ({
