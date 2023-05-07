@@ -4,7 +4,6 @@ import { CreateCustomerInput } from "../dtos/inputs/create-customer-input";
 import { AppointmentViewModel } from "../dtos/view-models/appointment-view-model";
 import { CustomerModel } from "../models/customer-model";
 import { randomUUID } from "node:crypto";
-import { AppointmentModel } from "../models/appointment-model";
 
 @Resolver(() => CustomerViewModel)
 export class CustomerResolver {
