@@ -72,3 +72,6 @@ The n+1 problem means that the server executes multiple unnecessary trips to the
 - [x] Create AppointmentModel and implement it at the resolver
 - [x] Create CustomerModel and implement it at the resolver
 - [x] Deploy
+- [x] Find ways to solve the N+1 problem
+- [ ] Create dataloaders
+- [ ] Test [Mercurius](https://mercurius.dev/)
