@@ -73,5 +73,6 @@ The n+1 problem means that the server executes multiple unnecessary trips to the
 - [x] Create CustomerModel and implement it at the resolver
 - [x] Deploy
 - [x] Find ways to solve the N+1 problem
-- [ ] Create dataloaders
+- [x] Create dataloaders
+- [ ] @Ctx type at the field resolvers
 - [ ] Test [Mercurius](https://mercurius.dev/)
