@@ -4,6 +4,7 @@ import { CreateCustomerInput } from "../dtos/inputs/create-customer-input";
 import { AppointmentViewModel } from "../dtos/view-models/appointment-view-model";
 import { CustomerModel } from "../models/customer-model";
 import { randomUUID } from "node:crypto";
+import { Context } from "../create-server";
 
 @Resolver(() => CustomerViewModel)
 export class CustomerResolver {
@@ -35,7 +36,7 @@ export class CustomerResolver {
   }
 
   @FieldResolver(() => [AppointmentViewModel])
-  async appointments(@Root() customer: CustomerViewModel, @Ctx() ctx: any): Promise<AppointmentViewModel[]> {
+  async appointments(@Root() customer: CustomerViewModel, @Ctx() ctx: Context): Promise<AppointmentViewModel[]> {
     return await ctx.appointmentLoader.load(customer.id);
   }
 }

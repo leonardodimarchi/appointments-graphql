@@ -1,15 +1,25 @@
 import "reflect-metadata";
 
-import { ApolloServer } from "@apollo/server";
+import { ApolloServer, BaseContext } from "@apollo/server";
 import { buildSchema } from "type-graphql";
 import { AppointmentsResolver } from "./resolvers/appointments-resolver";
 import { CustomerResolver } from "./resolvers/customer-resolver";
 import { ApolloServerLoaderPlugin } from "./plugins/loader-plugin";
+import { AppointmentViewModel } from "./dtos/view-models/appointment-view-model";
+import { CustomerViewModel } from "./dtos/view-models/customer-view-model";
 import mongoose from "mongoose";
 import path from "node:path";
 import * as dotenv from 'dotenv';
+import DataLoader from "dataloader";
 
-export async function createServer(): Promise<ApolloServer> {
+interface DataLoaders {
+  appointmentLoader: DataLoader<string, AppointmentViewModel[]>;
+  customerLoader: DataLoader<string, CustomerViewModel>;
+}
+
+export type Context = DataLoaders & BaseContext;
+
+export async function createServer(): Promise<ApolloServer<Context>> {
   dotenv.config();
   const dbUrl = process.env.DB_URL;
 
@@ -29,7 +39,7 @@ export async function createServer(): Promise<ApolloServer> {
     }
   });
 
-  return new ApolloServer({
+  return new ApolloServer<Context>({
     schema,
     plugins: [
       ApolloServerLoaderPlugin(),

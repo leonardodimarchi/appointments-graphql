@@ -5,6 +5,7 @@ import { CustomerViewModel } from "../dtos/view-models/customer-view-model";
 import { AppointmentModel } from "../models/appointment-model";
 import { randomUUID } from "node:crypto";
 import { CustomerModel } from "../models/customer-model";
+import { Context } from "../create-server";
 
 @Resolver(() => AppointmentViewModel)
 export class AppointmentsResolver {
@@ -45,7 +46,7 @@ export class AppointmentsResolver {
   }
 
   @FieldResolver(() => CustomerViewModel)
-  async customer(@Root() appointment: AppointmentViewModel, @Ctx() ctx: any): Promise<CustomerViewModel | null> {
+  async customer(@Root() appointment: AppointmentViewModel, @Ctx() ctx: Context): Promise<CustomerViewModel | null> {
     return await ctx.customerLoader.load(appointment.customerId);
   }
 }
