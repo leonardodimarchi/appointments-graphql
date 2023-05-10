@@ -4,7 +4,6 @@ import { ApolloServer, BaseContext } from "@apollo/server";
 import { buildSchema } from "type-graphql";
 import { AppointmentsResolver } from "./resolvers/appointments-resolver";
 import { CustomerResolver } from "./resolvers/customer-resolver";
-import { ApolloServerLoaderPlugin } from "./plugins/loader-plugin";
 import { DataLoaders } from './dataloaders';
 import mongoose from "mongoose";
 import path from "node:path";
@@ -35,8 +34,5 @@ export async function createServer(): Promise<ApolloServer<Context>> {
 
   return new ApolloServer<Context>({
     schema,
-    plugins: [
-      ApolloServerLoaderPlugin(),
-    ]
   });
 }
