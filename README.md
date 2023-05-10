@@ -64,6 +64,26 @@ The n+1 problem means that the server executes multiple unnecessary trips to the
 
 [Shopify Engineering - Solving the N+1 Problem for GraphQL through Batching](https://shopify.engineering/solving-the-n-1-problem-for-graphql-through-batching#:~:text=The%20n%2B1%20problem%20means,the%20address%20for%20N%20authors.)
 
+## Apollo Server vs Mercurius
+
+We can see Apollo Server and Mercurius as libraries that adapt the GraphQL spec to NodeJS, making it easier to create GraphQL APIs.
+
+### Apollo Server
+
+```diff
++ Ecosystem: Large and established ecosystem, with a good documentation, a lot of plugins, integrations, and community resources.
+
+- Performance: Apollo Server is generally considered to be slower than Mercurius, especially when it comes to handling large GraphQL schemas or high traffic volumes.
+```
+
+### Mercurius
+
+```diff
++ Performance: This is partly because Mercurius uses a more efficient code generation process.
+
+- Ecosystem: Mercurius is a relatively new library and has a smaller community than Apollo Server. This means that there are fewer plugins, integrations, and community resources available.
+```
+
 # TODO
 - [x] Add a simple server
 - [x] Create the normal server
