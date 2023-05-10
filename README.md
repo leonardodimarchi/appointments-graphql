@@ -66,23 +66,23 @@ The n+1 problem means that the server executes multiple unnecessary trips to the
 
 ## Apollo Server vs Mercurius
 
-We can see Apollo Server and Mercurius as libraries that adapt the GraphQL spec to NodeJS, making it easier to create GraphQL APIs.
+We can see Apollo Server and Mercurius as libraries that adapt the GraphQL spec to NodeJS, making it easier to create GraphQL APIs. Both of them have pros and cons, in which i will try to explain here.
 
 ### Apollo Server
 
-```diff
-+ Ecosystem: Large and established ecosystem, with a good documentation, a lot of plugins, integrations, and community resources.
+**Ecosystem**: Large and established ecosystem, with a good documentation, a lot of plugins, integrations, and community resources.
 
-- Performance: Apollo Server is generally considered to be slower than Mercurius, especially when it comes to handling large GraphQL schemas or high traffic volumes.
-```
+**Performance**: Apollo Server is generally considered to be slower than Mercurius, especially when it comes to handling large GraphQL schemas or high traffic volumes. The performance can be improved using different methods, such as using fastify and graphql-jit for example.
 
 ### Mercurius
 
-```diff
-+ Performance: This is partly because Mercurius uses a more efficient code generation process.
+**Ecosystem**: Mercurius is a relatively new library and has a smaller community than Apollo Server. This means that there are fewer plugins, integrations, and community resources available.
 
-- Ecosystem: Mercurius is a relatively new library and has a smaller community than Apollo Server. This means that there are fewer plugins, integrations, and community resources available.
-```
+**Performance**: It doesn't add much overhead, could be a good choice if your priority is to have a good performance out of the box.
+
+### Related
+
+[Benwad - Node GraphQL Benchmarks](https://github.com/benawad/node-graphql-benchmarks/blob/master/README.md)
 
 # TODO
 - [x] Add a simple server
