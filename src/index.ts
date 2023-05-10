@@ -5,7 +5,7 @@ import { ServerlessAdapter } from '@h4ad/serverless-adapter';
 import { DefaultHandler } from '@h4ad/serverless-adapter/lib/handlers/default';
 import { PromiseResolver } from '@h4ad/serverless-adapter/lib/resolvers/promise';
 import { ApiGatewayV2Adapter } from '@h4ad/serverless-adapter/lib/adapters/aws';
-import { createServer } from './create-server';
+import { Context, createServer } from './create-server';
 
 async function bootstrap() {
   const app = await createServer();
@@ -16,7 +16,7 @@ async function bootstrap() {
 }
 
 const apolloServerFramework = new JsonBodyParserFramework(
-  new ApolloServerFramework(),
+  new ApolloServerFramework<Context>(),
 );
 
 const framework = new LazyFramework(apolloServerFramework, bootstrap);

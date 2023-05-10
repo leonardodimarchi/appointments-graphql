@@ -1,10 +1,10 @@
-import { Arg, FieldResolver, Mutation, Query, Resolver, Root } from "type-graphql";
+import { Arg, Ctx, FieldResolver, Mutation, Query, Resolver, Root } from "type-graphql";
 import { CustomerViewModel } from "../dtos/view-models/customer-view-model";
 import { CreateCustomerInput } from "../dtos/inputs/create-customer-input";
 import { AppointmentViewModel } from "../dtos/view-models/appointment-view-model";
 import { CustomerModel } from "../models/customer-model";
 import { randomUUID } from "node:crypto";
-import { AppointmentModel } from "../models/appointment-model";
+import { Context } from "../create-server";
 
 @Resolver(() => CustomerViewModel)
 export class CustomerResolver {
@@ -36,14 +36,7 @@ export class CustomerResolver {
   }
 
   @FieldResolver(() => [AppointmentViewModel])
-  async appointments(@Root() customer: CustomerViewModel): Promise<AppointmentViewModel[]> {
-    const result = await AppointmentModel.findByCustomerId(customer.id);
-
-    return result.map(appointment => ({
-      id: appointment.id,
-      customerId: appointment.customerId,
-      startsAt: appointment.startsAt,
-      endsAt: appointment.endsAt,
-    }));
+  async appointments(@Root() customer: CustomerViewModel, @Ctx() ctx: Context): Promise<AppointmentViewModel[]> {
+    return await ctx.appointmentLoader.load(customer.id);
   }
 }
