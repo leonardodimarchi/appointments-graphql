@@ -5,17 +5,11 @@ import { buildSchema } from "type-graphql";
 import { AppointmentsResolver } from "./resolvers/appointments-resolver";
 import { CustomerResolver } from "./resolvers/customer-resolver";
 import { ApolloServerLoaderPlugin } from "./plugins/loader-plugin";
-import { AppointmentViewModel } from "./dtos/view-models/appointment-view-model";
-import { CustomerViewModel } from "./dtos/view-models/customer-view-model";
+import { DataLoaders } from './dataloaders';
 import mongoose from "mongoose";
 import path from "node:path";
 import * as dotenv from 'dotenv';
-import DataLoader from "dataloader";
 
-interface DataLoaders {
-  appointmentLoader: DataLoader<string, AppointmentViewModel[]>;
-  customerLoader: DataLoader<string, CustomerViewModel>;
-}
 
 export type Context = DataLoaders & BaseContext;
 
