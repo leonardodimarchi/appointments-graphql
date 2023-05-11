@@ -95,4 +95,4 @@ We can see Apollo Server and Mercurius as libraries that adapt the GraphQL spec 
 - [x] Find ways to solve the N+1 problem
 - [x] Create dataloaders
 - [x] @Ctx type at the field resolvers
-- [ ] Test [Mercurius](https://mercurius.dev/)
+- [x] Check [Mercurius](https://mercurius.dev/)
